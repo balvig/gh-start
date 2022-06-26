@@ -18,8 +18,8 @@ module Start
       checkout_branch
       create_empty_commit
       push_branch
-      create_draft_pull_request
       story.assign
+      create_draft_pull_request
     end
 
     private
@@ -40,6 +40,7 @@ module Start
 
       def create_draft_pull_request
         Github::Api.create_draft_pull_request
+        Command.title "Created draft PR, run `gh pr view --web` to view."
       end
 
       def branch_name

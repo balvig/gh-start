@@ -8,10 +8,6 @@ module Start
       git_user_name.parameterize(separator: " ").split.map(&:first).join.downcase
     end
 
-    def github_login
-      @_github_login ||= `gh api user --jq '.login'`
-    end
-
     private
 
       def git_user_name
