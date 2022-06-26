@@ -33,6 +33,7 @@ module Start
       expect_commit("ISSUE TITLE\n\nCloses https://github.com/balvig/gh-start/issues/1")
       expect_push("jb/issue-title")
       expect_pull_request
+      expect_assign('balvig/gh-start', 1)
 
       start "https://github.com/balvig/gh-start/issues/1"
 

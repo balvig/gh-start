@@ -6,29 +6,32 @@ def shell
   Start::Command.client
 end
 
-def stub_github_user(name)
-  shell.expect :read, name, ["git config user.name"]
-end
-
-def stub_branch(branch)
-  shell.expect :read, branch, ["git rev-parse --abbrev-ref HEAD"]
-end
-
 def expect_read(command, return_value)
   shell.expect :read, return_value, [command]
 end
 
+def expect_run(command, options = nil)
+  shell.expect :run, nil, [command, options].compact
+end
+
+def stub_github_user(name)
+  expect_read "git config user.name", name
+end
+
+def stub_branch(branch)
+  expect_read "git rev-parse --abbrev-ref HEAD", branch
+end
+
 def expect_checkout(branch)
-  shell.expect :run, nil, ["git checkout #{branch} >/dev/null 2>&1 || git checkout -b #{branch}", { title: "Checking out new branch" }]
+  expect_run "git checkout #{branch} >/dev/null 2>&1 || git checkout -b #{branch}", title: "Checking out new branch"
 end
 
 def expect_commit(message)
-  expected_command = "git commit --allow-empty -m#{Shellwords.escape(message)}"
-  shell.expect :run, nil, [expected_command, { title: "Creating initial commit" }]
+  expect_run "git commit --allow-empty -m#{Shellwords.escape(message)}", title: "Creating initial commit"
 end
 
 def expect_push(branch)
-  shell.expect :run, nil, ["git push origin #{branch} -u", { title: "Pushing to origin" }]
+  expect_run "git push origin #{branch} -u", title: "Pushing to origin"
 end
 
 def expect_error(error)
@@ -44,5 +47,9 @@ def expect_title(message)
 end
 
 def expect_pull_request
-  shell.expect :run, nil, ["gh pr create --draft --fill"]
+  expect_run "gh pr create --draft --fill"
+end
+
+def expect_assign(repo, number)
+  expect_run "gh issue edit #{number} --add-assignee \"@me\" --repo #{repo}"
 end
