@@ -2,7 +2,7 @@ require "active_support/core_ext/module/delegation"
 require "uri"
 
 module Start
-  class Url
+  class StoryUrl
     delegate :host, :to_s, to: :uri
 
     def self.parse(text)

@@ -1,4 +1,4 @@
-require "start/url"
+require "start/story_url"
 
 module Start
   class Input < String
@@ -7,19 +7,19 @@ module Start
     end
 
     def github_issue?
-      return unless url?
+      return unless story_url?
 
-      url.host == "github.com" && url.path_segments.include?("issues")
+      story_url.host == "github.com" && story_url.path_segments.include?("issues")
     end
 
-    def url
-      @_url ||= Url.parse(self)
+    def story_url
+      @_story_url ||= StoryUrl.parse(self)
     end
 
     private
 
-      def url?
-        !!url
+      def story_url?
+        !!story_url
       end
   end
 end

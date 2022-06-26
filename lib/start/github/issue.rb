@@ -4,8 +4,8 @@ require "start/github/api"
 module Start
   module Github
     class Issue < Story
-      def initialize(url)
-        @url = url
+      def initialize(story_url)
+        @story_url = story_url
       end
 
       def title
@@ -13,7 +13,7 @@ module Start
       end
 
       def description
-        "Closes #{url}"
+        "Closes #{story_url}"
       end
 
       def assign
@@ -22,18 +22,18 @@ module Start
 
       private
 
-        attr_reader :url
+        attr_reader :story_url
 
         def owner
-          url.path_segments[1]
+          story_url.path_segments[1]
         end
 
         def name
-          url.path_segments[2]
+          story_url.path_segments[2]
         end
 
         def number
-          url.path_segments.last
+          story_url.path_segments.last
         end
     end
   end

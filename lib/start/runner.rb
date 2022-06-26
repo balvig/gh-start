@@ -62,7 +62,7 @@ module Start
 
       def find_story
         if input.github_issue?
-          Github::Issue.new(input.url)
+          Github::Issue.new(input.story_url)
         else
           AdhocStory.new(input)
         end
