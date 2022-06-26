@@ -26,8 +26,8 @@ module Start
     end
 
     def test_start_github_issue
-      expect_read(/gh api graphql -F owner='balvig' -F name='gh-start' -F number=1/, 'ISSUE TITLE')
       stub_github_user("John Bobson")
+      expect_read(/gh api graphql -F owner='balvig' -F name='gh-start' -F number=1/, 'ISSUE TITLE')
       expect_question("Branch name: jb/", default: "issue-title", answer: "issue-title")
       expect_checkout("jb/issue-title")
       expect_commit("ISSUE TITLE\n\nCloses https://github.com/balvig/gh-start/issues/1")

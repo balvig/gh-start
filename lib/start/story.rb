@@ -1,10 +1,7 @@
 module Start
   class Story
-    attr_reader :title, :url
-
-    def initialize(title:, url: nil)
-      @title = title
-      @url = url
+    def title
+      raise "Implement in child"
     end
 
     def description

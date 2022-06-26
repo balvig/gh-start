@@ -2,16 +2,20 @@ require "start/story"
 
 module Start
   class AdhocStory < Story
-    attr_reader :title
+    def initialize(title)
+      @title = title
+    end
+
+    def title
+      @title
+    end
 
     def description
       # noop
     end
 
-    private
-
-      def assign
-        # noop
-      end
+    def assign
+      # noop
+    end
   end
 end
