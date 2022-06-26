@@ -8,7 +8,7 @@ A quick workflow for starting new stories:
 - (When given a GitHub issue) assigns user to issue.
 
 Extracted from https://github.com/cookpad/cp8_cli to work with the
-GitHub Cli.
+[GitHub Cli](https://github.com/cli/cli).
 
 ## Usage
 
