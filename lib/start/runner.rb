@@ -19,7 +19,7 @@ module Start
       create_empty_commit
       push_branch
       create_draft_pull_request
-      # assign
+      story.assign
     end
 
     private
