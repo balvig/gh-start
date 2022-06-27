@@ -19,10 +19,17 @@ gh start https://github.com/balvig/gh-start/issues/1 # checks out jb/issue-title
 
 ## Installation
 
-Requires Ruby and Bundler to be installed.
+- [Install GitHub CLI](https://github.com/cli/cli#installation)
+- Requires Ruby and Bundler to be installed.
 
 ```bash
 gh extension install https://github.com/balvig/gh-start
+```
+
+To upgrade to the lastest version:
+
+```bash
+gh extension upgrade start
 ```
 
 ## License
