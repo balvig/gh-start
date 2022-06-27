@@ -3,7 +3,6 @@ source 'https://rubygems.org'
 gem "activesupport", "~> 6.0"
 gem "colored", "~> 1.2"
 gem "highline", "~> 2.0.3"
-gem "octokit", "~> 4.21"
 gem "tty-prompt", "~> 0.23"
 
 group :test do
