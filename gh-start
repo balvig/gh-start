@@ -12,26 +12,8 @@ if ! type -p bundle >/dev/null; then
   exit 1
 fi
 
-# Pass arguments through to another command
-# gh issue list "$@" -R cli/cli
+# Run bundler/script from extension directory
+parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
+gemfile=$parent_path/Gemfile
 
-# Using the gh api command to retrieve and format information
-# QUERY='
-#   query($endCursor: String) {
-#     viewer {
-#       repositories(first: 100, after: $endCursor) {
-#         nodes {
-#           nameWithOwner
-#           stargazerCount
-#         }
-#       }
-#     }
-#   }
-# '
-# TEMPLATE='
-#   {{- range $repo := .data.viewer.repositories.nodes -}}
-#     {{- printf "name: %s - stargazers: %v\n" $repo.nameWithOwner $repo.stargazerCount -}}
-#   {{- end -}}
-# '
-# exec gh api graphql -f query="${QUERY}" --paginate --template="${TEMPLATE}"
-bundle --quiet && bundle exec ruby ./main.rb "$@"
+BUNDLE_GEMFILE="$gemfile" bundle --quiet && BUNDLE_GEMFILE="$gemfile" bundle exec ruby "$parent_path"/main.rb "$@"
