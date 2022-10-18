@@ -1,9 +1,10 @@
-require "active_support/core_ext/module/delegation"
+require "forwardable"
 require "uri"
 
 module Start
   class StoryUrl
-    delegate :host, :to_s, to: :uri
+    extend Forwardable
+    def_delegators :uri, :host, :to_s
 
     def self.parse(text)
       new(URI(text))

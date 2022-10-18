@@ -1,13 +1,14 @@
 require "colored"
-require "active_support/core_ext/module/delegation"
+require "forwardable"
 require "highline"
 require "tty-prompt"
 
 module Start
   class Command
     class << self
-      delegate :say, :success, :ask, :title, :error, :run, :read, to: :client
       attr_accessor :client
+      extend Forwardable
+      def_delegators :client, :say, :success, :ask, :title, :error, :run, :read
     end
 
     self.client = new
@@ -54,3 +55,4 @@ module Start
       end
   end
 end
+
