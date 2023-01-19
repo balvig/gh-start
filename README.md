@@ -13,9 +13,13 @@ Extracted from https://github.com/cookpad/cp8_cli to work with the
 ## Usage
 
 ```bash
-gh start "My new story" # checks out jb/my-new-story
-gh start https://github.com/balvig/gh-start/issues/1 # checks out jb/issue-title
+gh start "My new story" # creates jb/my-new-story branch and opens PR
+gh start https://github.com/balvig/gh-start/issues/1 # creates jb/issue-title branch and opens PR
 ```
+
+## Demo
+
+<img src="demo.gif" alt="Demo Animation" width="700" />
 
 ## Installation
 
