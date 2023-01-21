@@ -2,9 +2,9 @@
 
 A quick workflow for starting new stories:
 
-- Automatically generates branch name.
+- Automatically generates branch name from story description.
 - Creates and checks out the new branch.
-- Opens a draft pull request.
+- Opens a draft pull request with title based on story description.
 - (When given a GitHub issue) assigns user to issue and populates PR title/description.
 
 Extracted from https://github.com/cookpad/cp8_cli to work with the
