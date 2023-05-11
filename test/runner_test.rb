@@ -13,7 +13,7 @@ module Start
       expect_commit("Story title")
       expect_push("jb/story-title")
       expect_pull_request
-      expect_title(/Created draft PR/)
+      expect_title(/Created PR/)
 
       start "Story title"
 
@@ -35,7 +35,7 @@ module Start
       expect_push("jb/issue-title")
       expect_assign('balvig/gh-start', 1)
       expect_pull_request
-      expect_title(/Created draft PR/)
+      expect_title(/Created PR/)
 
       start "https://github.com/balvig/gh-start/issues/1"
 

@@ -47,7 +47,7 @@ def expect_title(message)
 end
 
 def expect_pull_request
-  expect_run "gh pr create --draft --fill"
+  expect_run "gh pr create --fill"
 end
 
 def expect_assign(repo, number)

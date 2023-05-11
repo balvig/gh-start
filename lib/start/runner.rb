@@ -19,7 +19,7 @@ module Start
       create_empty_commit
       push_branch
       story.assign
-      create_draft_pull_request
+      create_pull_request
     end
 
     private
@@ -38,9 +38,9 @@ module Start
         Command.run "git push origin #{branch_name} -u", title: "Pushing to origin"
       end
 
-      def create_draft_pull_request
-        Github::Api.create_draft_pull_request
-        Command.title "Created draft PR, run `gh pr view --web` to view."
+      def create_pull_request
+        Github::Api.create_pull_request
+        Command.title "Created PR, run `gh pr view --web` to view."
       end
 
       def branch_name
