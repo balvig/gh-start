@@ -14,7 +14,7 @@ module Start
       # noop
     end
 
-    def assign
+    def start
       # noop
     end
   end
