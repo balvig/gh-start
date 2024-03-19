@@ -11,5 +11,9 @@ module Start
     def assign
       raise "Implement in child"
     end
+
+    def start
+      raise "Implement in child"
+    end
   end
 end

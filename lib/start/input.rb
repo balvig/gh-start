@@ -7,9 +7,15 @@ module Start
     end
 
     def github_issue?
-      return unless story_url?
+      return false unless story_url?
 
       story_url.host == "github.com" && story_url.path_segments.include?("issues")
+    end
+
+    def jira_issue?
+      return false unless story_url?
+
+      story_url.host.include?("atlassian.net")
     end
 
     def story_url

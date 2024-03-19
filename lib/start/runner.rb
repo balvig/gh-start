@@ -5,6 +5,7 @@ require "start/command"
 require "start/current_user"
 require "start/adhoc_story"
 require "start/github/issue"
+require "start/jira/issue"
 
 module Start
   class Runner
@@ -18,7 +19,7 @@ module Start
       checkout_branch
       create_empty_commit
       push_branch
-      story.assign
+      story.start
       create_draft_pull_request
     end
 
@@ -64,6 +65,8 @@ module Start
       def find_story
         if input.github_issue?
           Github::Issue.new(input.story_url)
+        elsif input.jira_issue?
+          Jira::Issue.new(input.story_url)
         else
           AdhocStory.new(input)
         end

@@ -16,7 +16,7 @@ module Start
         "Closes #{story_url}"
       end
 
-      def assign
+      def start
         Github::Api.assign_self(owner: owner, name: name, number: number)
       end
 
