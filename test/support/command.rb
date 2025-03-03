@@ -7,11 +7,13 @@ def shell
 end
 
 def expect_read(command, return_value)
-  shell.expect :read, return_value, [command]
+  shell.expect :read, return_value, [ command ]
 end
 
 def expect_run(command, options = nil)
-  shell.expect :run, nil, [command, options].compact
+  shell.expect :run, nil do |expected_command, expected_options|
+    expected_command == command && expected_options == options
+  end
 end
 
 def stub_github_user(name)
@@ -35,15 +37,17 @@ def expect_push(branch)
 end
 
 def expect_error(error)
-  shell.expect :error, nil, [error]
+  shell.expect :error, nil, [ error ]
 end
 
-def expect_question(question, answer: nil,  **options)
-  shell.expect :ask, answer, [question, options]
+def expect_question(question, answer: nil, **options)
+  shell.expect :ask, answer do |expected_question, expected_options|
+    expected_question == question && expected_options == options
+  end
 end
 
 def expect_title(message)
-  shell.expect :title, nil, [message]
+  shell.expect :title, nil, [ message ]
 end
 
 def expect_pull_request

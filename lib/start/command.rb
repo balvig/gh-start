@@ -25,8 +25,8 @@ module Start
       highline.say(message.green.bold)
     end
 
-    def ask(message, required: true, default: nil)
-      tty.ask(message, required: required, default: default)
+    def ask(question, default: nil)
+      tty.ask(question, required: true, default: default)
     end
 
     def error(message)

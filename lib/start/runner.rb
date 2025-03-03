@@ -1,3 +1,5 @@
+require "active_support/core_ext/object"
+require "active_support/core_ext/string"
 require "shellwords"
 require "start/input"
 require "start/branch_name"
