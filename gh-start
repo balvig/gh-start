@@ -16,4 +16,4 @@ fi
 parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
 gemfile=$parent_path/Gemfile
 
-BUNDLE_GEMFILE="$gemfile" bundle --quiet && BUNDLE_GEMFILE="$gemfile" bundle exec ruby "$parent_path"/main.rb "$@"
+BUNDLE_GEMFILE="$gemfile" bundle install --quiet && BUNDLE_GEMFILE="$gemfile" bundle exec ruby "$parent_path"/main.rb "$@"
